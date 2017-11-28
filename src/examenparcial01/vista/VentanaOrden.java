@@ -48,7 +48,7 @@ public class VentanaOrden extends JInternalFrame{
    
    public VentanaOrden(GestionDato gestionDato) 
     {
-        super("Registrar Boleto",true,true,true,true);
+        super("Registrar Orden",true,true,true,true);
         this.setSize(400, 300);
         this.gestionDato = gestionDato;
         this.iniciaComponente();
@@ -88,10 +88,13 @@ public class VentanaOrden extends JInternalFrame{
 	this.panelGuardar = new JPanel(disenio);
 	this.panelInicial = new JPanel(disenio2);
         
+        this.panelGuardar.add(this.etiquetaList.get(0));
         this.panelGuardar.add(this.textoList.get(0));
+        this.panelGuardar.add(this.etiquetaList.get(1));
+	this.panelGuardar.add(this.combo.get(1));
+        this.panelGuardar.add(this.etiquetaList.get(2));
 	this.panelGuardar.add(this.combo.get(0));
-	
-        
+
         this.panelVer.add(this.scroll, BorderLayout.CENTER);
 	this.panelGuardar.add(this.boton);
 	this.panelInicial.add(this.panelGuardar);
