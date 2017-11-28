@@ -36,7 +36,7 @@ public class VentanaPrincipal extends JFrame{
     
     public VentanaPrincipal(String titulo, GestionDato gD) {
         this.setTitle(titulo);
-        this.setSize(700, 600);
+        this.setSize(800, 600);
         this.setDefaultCloseOperation(3);
         this.gD = gD;
         iniciaComponente();
@@ -70,6 +70,8 @@ public class VentanaPrincipal extends JFrame{
         this.menuItemList.get(0).addActionListener(new EventoVentanaPrincipal(this));
         this.menuItemList.get(1).addActionListener(new EventoVentanaPrincipal(this));
         this.menuItemList.get(2).addActionListener(new EventoVentanaPrincipal(this));
+        this.menuItemList.get(3).addActionListener(new EventoVentanaPrincipal(this));
+        this.menuItemList.get(4).addActionListener(new EventoVentanaPrincipal(this));
            
     }
 

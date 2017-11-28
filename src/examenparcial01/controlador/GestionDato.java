@@ -71,6 +71,7 @@ public class GestionDato
     public void setOrdenList(List<Orden> ordenList) {
         this.ordenList = ordenList;
     }
+    
     public boolean addFestivalMusical(FestivalMusical fM)
     {
       return this.festivalMusicalList.add(fM);
@@ -91,6 +92,33 @@ public class GestionDato
     {
       return this.asistenteList.add(aS);
     }
+      //metodos combos
+      
+      public Object[] comboBox()
+    {
+      Object [] combo=new Object[this.getArtistaList().size()];
+      int i=0;
+      for(Artista aR :this.getArtistaList())
+      {
+         combo[i]=(aR.getNombre());
+         i++;
+      }
+      return combo;
+    }
+   
+   public Object[] comboBox2()
+    {
+      Object [] combo=new Object[this.getFestivalMusicalList().size()];
+      int i=0;
+      for(FestivalMusical fM :this.getFestivalMusicalList())
+      {
+         combo[i]=(fM.getNombre());
+         i++;
+      }
+      return combo;
+    }
+    //metodos buscar  
+      
     public Asistente bucarAsistente (String x){
         Asistente retorno=null;
         for(Asistente aS:this.asistenteList){
@@ -101,5 +129,25 @@ public class GestionDato
         return retorno;
     }
 
+    public Artista buscarArtista(String x){
+        Artista retorno =null;
+        for(Artista aR : this.artistaList){
+            if(aR.getNombre()==x){
+                retorno = aR;
+            }
+        }
+        return retorno;
+    }
+    
+    public FestivalMusical buscarFestival(String x){
+        FestivalMusical retorno = null;
+        for(FestivalMusical fM : this.festivalMusicalList){
+            if(fM.getNombre()==x){
+                retorno =fM;
+            }
+        }
+        return retorno;
+    }
+    
     
 }

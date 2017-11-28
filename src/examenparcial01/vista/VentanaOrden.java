@@ -5,13 +5,15 @@
  */
 package examenparcial01.vista;
 
-import examenparcial01.controlador.EventoVentanaBoleto;
+import examenparcial01.controlador.EventoVentanaOrden;
 import examenparcial01.controlador.GestionDato;
-import examenparcial01.modelo.Asistente;
-import examenparcial01.modelo.Boleto;
+import examenparcial01.modelo.Artista;
+import examenparcial01.modelo.FestivalMusical;
+import examenparcial01.modelo.Orden;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
@@ -26,10 +28,10 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author PC-MATIC
+ * @author USUARIO
  */
-public class VentanaBoleto extends JInternalFrame
-{
+public class VentanaOrden extends JInternalFrame{
+    
    private List<JLabel> etiquetaList;
    private List<JTextField> textoList;
    private JButton boton;
@@ -42,90 +44,77 @@ public class VentanaBoleto extends JInternalFrame
    private DefaultTableModel modeloTabla;
    private JTable tabla;
    private JScrollPane scroll;
-   private JComboBox combo; 
-
-    public VentanaBoleto(GestionDato gestionDato) 
+   private List<JComboBox> combo; 
+   
+   public VentanaOrden(GestionDato gestionDato) 
     {
         super("Registrar Boleto",true,true,true,true);
         this.setSize(400, 300);
         this.gestionDato = gestionDato;
-        this.iniciaComponentes();
+        this.iniciaComponente();
     }
-    public void iniciaComponentes()
-    {
-        this.etiquetaList= new ArrayList<JLabel>();
-        this.etiquetaList.add(new JLabel("Asistente: ")); 
-        this.etiquetaList.add(new JLabel("Asiento: ")); 
-        this.etiquetaList.add(new JLabel("Nombre de Festival: "));
-        
-        this.encabezado = new Object[3];
-	this.encabezado[0] = "Asistente";
-	this.encabezado[1] = "Asiento";
-        this.encabezado[2] = "Nombre de Festival";
-        
-        this.datos = cargaDatosTabla(this.gestionDato.getBoletoList().size(), 3);
-
-	this.modeloTabla = new DefaultTableModel(this.datos, this.encabezado);
-	this.tabla = new JTable(this.modeloTabla);
-	this.scroll = new JScrollPane(this.tabla);
+   
+   public void iniciaComponente(){
        
-        this.textoList=new ArrayList<JTextField>();
-        this.combo=new JComboBox (this.cargaCombo());
-        this.textoList.add(new JTextField(0));
-        this.textoList.add(new JTextField(1));
-          
-        
-        this.boton=new JButton("Guardar");
-         
-        
-        this.boton.addActionListener(new EventoVentanaBoleto(this));
+       this.etiquetaList= new ArrayList<JLabel>();
+       this.etiquetaList.add(new JLabel("Orden"));
+       this.etiquetaList.add(new JLabel("Artista"));
+       this.etiquetaList.add(new JLabel("Festival Musical"));
+       
+       this.textoList= new ArrayList<JTextField>();
+       this.textoList.add(new JTextField(15));
+       
+       this.boton=new JButton("Guardar");
+       this.boton.addActionListener(new EventoVentanaOrden(this));
+       
+       this.encabezado = new Object[3];
+       this.encabezado[0] = "Orden";
+       this.encabezado[1] = "Artista";
+       this.encabezado[2] = "Festival Musical";
+       
+       this.datos = cargaDatosTabla(this.gestionDato.getBoletoList().size(), 3);
+       
+       this.combo = new ArrayList<JComboBox>();
+       this.combo.add(new JComboBox(this.gestionDato.comboBox()));
+       this.combo.add(new JComboBox(this.gestionDato.comboBox2()));
+
+       this.modeloTabla = new DefaultTableModel(this.datos, this.encabezado);
+       this.tabla = new JTable(this.modeloTabla);
+       this.scroll = new JScrollPane(this.tabla);
         
         LayoutManager disenio = new GridLayout(5, 3);
 	LayoutManager disenio2 = new GridLayout(2, 1);
 	this.panelVer= new JPanel(new BorderLayout());
 	this.panelGuardar = new JPanel(disenio);
 	this.panelInicial = new JPanel(disenio2);
-        this.panelGuardar.add(this.combo);
-        this.panelGuardar.add(this.etiquetaList.get(0));
-        this.panelGuardar.add(this.textoList.get(0));
-        this.panelGuardar.add(this.etiquetaList.get(1));
-        this.panelGuardar.add(this.textoList.get(1));
-	
-	this.panelVer.add(this.scroll, BorderLayout.CENTER);
         
+        this.panelGuardar.add(this.textoList.get(0));
+	this.panelGuardar.add(this.combo.get(0));
+	
+        
+        this.panelVer.add(this.scroll, BorderLayout.CENTER);
 	this.panelGuardar.add(this.boton);
 	this.panelInicial.add(this.panelGuardar);
 	this.panelInicial.add(this.panelVer);
-        
 	this.add(this.panelInicial);
-        
-       
-    }
-    public Object[][] cargaDatosTabla(int h, int w) 
+         
+   }
+   
+   public Object[][] cargaDatosTabla(int h, int w) 
     {
 	Object[][] retorno = new Object[h][w];
 	int i = 0;
-	for (Boleto b : this.gestionDato.getBoletoList()) 
+	for (Orden o : this.gestionDato.getOrdenList()) 
         {
-            retorno[i][0] = b.getAsistente().getNombre();
-            retorno[i][1] = b.getAsiento();
-            retorno[i][2] = b.getFestivalMusical();
+            retorno[i][0] = o.getOrden();
+            retorno[i][1] = o.getArtista().getNombre();
+            retorno[i][2] = o.getFestivalMusical().getNombre();
             i++;
         }
         return retorno;
     }
     
-    public Object[] cargaCombo()
-    {
-      Object [] combo=new Object[this.gestionDato.getAsistenteList().size()];
-      int i=0;
-      for(Asistente aS :this.gestionDato.getAsistenteList())
-      {
-         combo[i]=(aS.getNombre());
-         i++;
-      }
-      return combo;
-    }
+   
 
     public List<JLabel> getEtiquetaList() {
         return etiquetaList;
@@ -223,13 +212,14 @@ public class VentanaBoleto extends JInternalFrame
         this.scroll = scroll;
     }
 
-    public JComboBox getCombo() {
+    public List<JComboBox> getCombo() {
         return combo;
     }
 
-    public void setCombo(JComboBox combo) {
+    public void setCombo(List<JComboBox> combo) {
         this.combo = combo;
     }
-   
+
+    
    
 }
