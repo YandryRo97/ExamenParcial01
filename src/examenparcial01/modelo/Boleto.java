@@ -37,6 +37,11 @@ public class Boleto
         this.festival = festival;
     }
 
+    @Override
+    public String toString() {
+        return "Boleto{" + "asistente=" + asistente + ", asiento=" + asiento + ", festival=" + festival + '}';
+    }
+
    
     
 }
