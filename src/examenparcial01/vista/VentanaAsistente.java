@@ -31,16 +31,17 @@ public class VentanaAsistente extends JInternalFrame {
     public VentanaAsistente(GestionDato gD) {
         super("Registrar Aspirante",true,true,true,true);
         this.gD = gD;
-        this.setSize(500,650);
+        this.setSize(400,300);
         this.iniciaComponentes();
     }
     
     public void iniciaComponentes(){
         this.etiList = new ArrayList<JLabel>();
-         this.etiList.add(new JLabel("Codigo"));
+        this.etiList.add(new JLabel("Cedula"));
+        this.etiList.add(new JLabel("Codigo"));
         this.etiList.add(new JLabel("Nombre"));
         this.etiList.add(new JLabel("Fecha de nacimiento"));
-        this.etiList.add(new JLabel("Cedula"));
+        
         this.txtList = new ArrayList<JTextField>();
         this.txtList.add(new JTextField());
         this.txtList.add(new JTextField());
@@ -63,10 +64,11 @@ public class VentanaAsistente extends JInternalFrame {
         
         //Tabla
         this.encabezado = new Object[4];
-        this.encabezado[0]="Codigo";
-        this.encabezado[1]="Nombre";
-        this.encabezado[2]="Fecha de nacimiento";
-        this.encabezado[3]="Cedula";
+        this.encabezado[0]="Cedula";
+        this.encabezado[1]="Codigo";
+        this.encabezado[2]="Nombre";
+        this.encabezado[3]="Fecha de nacimiento";
+        
         
         this.datos = cargaDatosTabla(this.getgD().getAsistenteList().size(),4);
         this.modeloTabla = new DefaultTableModel(this.datos,this.encabezado);
@@ -84,8 +86,10 @@ public class VentanaAsistente extends JInternalFrame {
         int i=0;
         for(Asistente a:this.gD.getAsistenteList())
         {
-            retorno[i][0]=a.getPersona().getCodigo() + a.getPersona().getNombre()+ a.getPersona().getFechaNacimiento();
-            retorno[i][3]=a.getCedula();
+            retorno[i][0]=a.getCedula();
+            retorno[i][1]=a.getCodigo();
+            retorno[i][2]=a.getNombre();
+            retorno[i][3]=a.getFechaNacimiento();
             i++;
         }        
         return retorno;

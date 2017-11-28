@@ -9,11 +9,21 @@ package examenparcial01.modelo;
  *
  * @author Estudiante
  */
-public abstract class Persona {
+public  class Persona {
     
     private int codigo;
     private String nombre;
     private String fechaNacimiento;
+    
+    public Persona(){
+        
+    }
+
+    public Persona(int codigo, String nombre, String fechaNacimiento) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.fechaNacimiento = fechaNacimiento;
+    }
 
     public int getCodigo() {
         return codigo;
@@ -38,4 +48,7 @@ public abstract class Persona {
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+    
+
+    
 }

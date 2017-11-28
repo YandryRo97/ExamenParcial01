@@ -23,27 +23,22 @@ public class EventoAsistente implements ActionListener {
     }
 
     @Override
-   public void actionPerformed(ActionEvent e) {
-       
-            String c = this.ventanaAsistente.getTxtList().get(0).getText().toUpperCase();
-            String n = this.ventanaAsistente.getTxtList().get(1).getText().toUpperCase();
-            String fn = this.ventanaAsistente.getTxtList().get(2).getText().toUpperCase();
-            String ce = this.ventanaAsistente.getTxtList().get(3).getText().toUpperCase();
-            
-        
-            Asistente a = new Asistente(c,n,fn,ce);
-            
-            boolean bandera=false;
-            for(Asistente as:this.ventanaAsistente.getgD().getAsistenteList()){
-                if(a.getCedula().equals(as.getCedula())){
-                    bandera = true;
-                    break;
-}
-            Object [][] datoAsistente=this.ventanaAsistente.cargaDatosTabla(this.ventanaAsistente.getgD().getAsistenteList().size(),4);
-            this.ventanaAsistente.setDatos(datoAsistente);
-            this.ventanaAsistente.getModeloTabla().setDataVector(this.ventanaAsistente.getDatos(), this.ventanaAsistente.getEncabezado());
-        
-    }
+   public void actionPerformed(ActionEvent e) 
+   {
+       String ce= this.ventanaAsistente.getTxtList().get(0).getText();
+       int co=Integer.parseInt(this.ventanaAsistente.getTxtList().get(1).getText());
+       String no= this.ventanaAsistente.getTxtList().get(2).getText();
+       String fN= this.ventanaAsistente.getTxtList().get(3).getText();
+      
+       Asistente a = new Asistente(ce,co,no,fN);
+       this.ventanaAsistente.getgD().addAsistente(a);
+       Object [][] datoAsistente=this.ventanaAsistente.cargaDatosTabla(this.ventanaAsistente.getgD().getAsistenteList().size(),4);
+       this.ventanaAsistente.setDatos(datoAsistente);
+       this.ventanaAsistente.getModeloTabla().setDataVector(this.ventanaAsistente.getDatos(), this.ventanaAsistente.getEncabezado());
    }
+    
+          
+        
+    
   }
 

@@ -5,6 +5,7 @@
  */
 package examenparcial01.vista;
 
+import examenparcial01.controlador.EventoVentanaPrincipal;
 import examenparcial01.controlador.GestionDato;
 import examenparcial01.modelo.Artista;
 import examenparcial01.modelo.Asistente;
@@ -66,11 +67,7 @@ public class VentanaPrincipal extends JFrame{
         this.menuList.get(0).add(this.menuItemList.get(3));
         this.menuList.get(0).add(this.menuItemList.get(4));
         
-       // this.menuItemList.get(1).addActionListener(new EventoVentanaPrincipal(this));
-        //this.menuItemList.get(0).addActionListener(new EventoVentanaPrincipal(this));
-       // this.menuItemList.get(2).addActionListener(new EventoVentanaPrincipal(this));
-       // this.menuItemList.get(3).addActionListener(new EventoVentanaPrincipal(this));
-       // this.menuItemList.get(4).addActionListener(new EventoVentanaPrincipal(this));
+        this.menuItemList.get(1).addActionListener(new EventoVentanaPrincipal(this));
            
     }
 
