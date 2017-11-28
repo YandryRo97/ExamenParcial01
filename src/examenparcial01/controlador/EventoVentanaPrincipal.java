@@ -5,7 +5,6 @@
  */
 package examenparcial01.controlador;
 
-import examenparcial01.vista.Ventana;
 import examenparcial01.vista.VentanaPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

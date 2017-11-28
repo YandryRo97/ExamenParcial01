@@ -62,9 +62,9 @@ public class VentanaPrincipal extends JFrame{
         
         this.menuList.get(0).add(this.menuItemList.get(0));
         this.menuList.get(0).add(this.menuItemList.get(1));
-        this.menuList.get(1).add(this.menuItemList.get(2));
-        this.menuList.get(2).add(this.menuItemList.get(3));
-        this.menuList.get(2).add(this.menuItemList.get(4));
+        this.menuList.get(0).add(this.menuItemList.get(2));
+        this.menuList.get(0).add(this.menuItemList.get(3));
+        this.menuList.get(0).add(this.menuItemList.get(4));
         
        // this.menuItemList.get(1).addActionListener(new EventoVentanaPrincipal(this));
         //this.menuItemList.get(0).addActionListener(new EventoVentanaPrincipal(this));

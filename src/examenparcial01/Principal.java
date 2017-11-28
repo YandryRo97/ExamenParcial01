@@ -11,7 +11,7 @@ import examenparcial01.modelo.Asistente;
 import examenparcial01.modelo.Boleto;
 import examenparcial01.modelo.FestivalMusical;
 import examenparcial01.modelo.Orden;
-import examenparcial01.vista.Ventana;
+import examenparcial01.vista.VentanaPrincipal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class Principal {
         
         GestionDato gD = new GestionDato(fM,bL,aL,asL,oL);
         
-        Ventana v = new Ventana("Examen Parcial 01", gD);
+        VentanaPrincipal v = new VentanaPrincipal("Examen Parcial 01", gD);
         v.setVisible(true);
     }
     
