@@ -1,8 +1,5 @@
 package examenparcial01.modelo;
-/**
- *
- * @author TutepapiMatute
- */
+
 public class FestivalMusical {
  
    private String nombre;

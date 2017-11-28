@@ -1,8 +1,5 @@
 package examenparcial01.modelo;
-/**
- *
- * @author Estudiante
- */
+
 public class Orden {
     private int orden;
     private FestivalMusical festivalMusical;
