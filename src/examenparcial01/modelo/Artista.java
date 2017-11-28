@@ -25,10 +25,7 @@ public class Artista extends Persona{
         this.tipoMusica = tipoMusica;
     }
 
-    @Override
-    public String toString() {
-        return "Artista{" + "tipoMusica=" + tipoMusica + '}';
-    }
+    
     
     
     
