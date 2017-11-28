@@ -32,6 +32,8 @@ public class EventoVentanaArtista implements ActionListener {
     @Override
    public void actionPerformed(ActionEvent e) 
    {
+       if(e.getSource().equals(this.ventanaArtista.getBoton())){
+           
        String tM= this.ventanaArtista.getTxtList().get(0).getText();
        int co=Integer.parseInt(this.ventanaArtista.getTxtList().get(1).getText());
        String no= this.ventanaArtista.getTxtList().get(2).getText();
@@ -39,9 +41,21 @@ public class EventoVentanaArtista implements ActionListener {
       
        Artista aR = new Artista(tM,co,no,fN);
        this.ventanaArtista.getgD().addArtista(aR);
+       
        Object [][] datoAsistente=this.ventanaArtista.cargaDatosTabla(this.ventanaArtista.getgD().getArtistaList().size(),4);
        this.ventanaArtista.setDatos(datoAsistente);
        this.ventanaArtista.getModeloTabla().setDataVector(this.ventanaArtista.getDatos(), this.ventanaArtista.getEncabezado());
+   
+       }
+       if(e.getActionCommand().equals("Limpiar")){
+            this.ventanaArtista.getTxtList().get(0).setText("");
+            this.ventanaArtista.getTxtList().get(1).setText("");
+            this.ventanaArtista.getTxtList().get(2).setText("");
+            this.ventanaArtista.getTxtList().get(3).setText("");
+            
+        }
+       
    }
+       
     
 }

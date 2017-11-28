@@ -46,10 +46,11 @@ public class EventoVentanaOrden implements ActionListener{
         if(e.getSource().equals(this.ventana.getBoton())){
            
         int ord = Integer.parseInt(this.ventana.getTextoList().get(0).getText());
-        String ar=this.ventana.getCombo().get(1).getSelectedItem().toString();
         String f= this.ventana.getCombo().get(2).getSelectedItem().toString();
+        String ar=this.ventana.getCombo().get(1).getSelectedItem().toString();
         
-        Orden or = new Orden(ord,this.ventana.getGestionDato().buscarArtista(ar),this.ventana.getGestionDato().buscarFestival(f));
+        
+        Orden or = new Orden(ord,this.ventana.getGestionDato().buscarFestival(f),this.ventana.getGestionDato().buscarArtista(ar));
         this.ventana.getGestionDato().addOrden(or);
         
         Object [][] datoOrden=this.ventana.cargaDatosTabla(this.ventana.getGestionDato().getOrdenList().size(),3);

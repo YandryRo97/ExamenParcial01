@@ -60,7 +60,7 @@ public class VentanaOrden extends JInternalFrame{
        this.etiquetaList.add(new JLabel("Orden"));
        this.etiquetaList.add(new JLabel("Artista"));
        this.etiquetaList.add(new JLabel("Festival Musical"));
-       
+      
        this.textoList= new ArrayList<JTextField>();
        this.textoList.add(new JTextField(15));
        
@@ -75,8 +75,8 @@ public class VentanaOrden extends JInternalFrame{
        this.datos = cargaDatosTabla(this.gestionDato.getBoletoList().size(), 3);
        
        this.combo = new ArrayList<JComboBox>();
-       this.combo.add(new JComboBox(this.gestionDato.comboBox()));
        this.combo.add(new JComboBox(this.gestionDato.comboBox2()));
+       this.combo.add(new JComboBox(this.gestionDato.comboBox()));
 
        this.modeloTabla = new DefaultTableModel(this.datos, this.encabezado);
        this.tabla = new JTable(this.modeloTabla);

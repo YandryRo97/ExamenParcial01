@@ -24,10 +24,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-
-
-
-
 /**
  *
  * @author USUARIO
@@ -36,7 +32,10 @@ public class VentanaArtista extends  JInternalFrame{
     private List<JLabel> etiList;
     private List<JTextField> txtList;
     private JButton boton;
-    private JPanel panelPrincipal;
+    private JButton boton2;
+    private JPanel panelGuardar;
+    private JPanel panelInicial;
+    private JPanel panelVer;
     private GestionDato gD;
     private Object[][] datos;
     private Object[] encabezado;
@@ -64,38 +63,40 @@ public class VentanaArtista extends  JInternalFrame{
         this.txtList.add(new JTextField());
         this.txtList.add(new JTextField());
         this.txtList.add(new JTextField());
+        
         this.boton = new JButton("Guardar");
+        this.boton2 = new JButton("Limpiar");
         this.boton.addActionListener(new EventoVentanaArtista(this));
+        this.boton2.addActionListener(new EventoVentanaArtista(this));
         
-        LayoutManager disenioPrincipal = new BorderLayout();
-        this.panelPrincipal = new JPanel(disenioPrincipal);
-        LayoutManager disenioSup = new GridLayout(4,2);
-        JPanel panelSup = new JPanel(disenioSup);
-        
-        for(int i=0;i<4;i++){
-            panelSup.add(this.etiList.get(i));
-            panelSup.add(this.txtList.get(i));
-        }
-        this.panelPrincipal.add(panelSup,BorderLayout.NORTH);
-        this.panelPrincipal.add(this.boton,BorderLayout.CENTER);
-        
-        //Tabla
         this.encabezado = new Object[4];
         this.encabezado[0]="Tipo de Musica";
         this.encabezado[1]="Codigo";
         this.encabezado[2]="Nombre";
         this.encabezado[3]="Fecha de nacimiento";
         
-        
         this.datos = cargaDatosTabla(this.getgD().getArtistaList().size(),4);
+        
         this.modeloTabla = new DefaultTableModel(this.datos,this.encabezado);
         this.tabla = new JTable(modeloTabla);
         this.scroll = new JScrollPane(this.tabla);
         
-        this.panelPrincipal.add(this.scroll,BorderLayout.SOUTH);
+        LayoutManager disenio = new GridLayout(6, 3);
+        LayoutManager disenio2 = new GridLayout(3, 2);
+	this.panelVer= new JPanel(new BorderLayout());
+	this.panelGuardar = new JPanel(disenio);
+	this.panelInicial = new JPanel(disenio2);
         
-        this.add(this.panelPrincipal);
-        
+        for(int i=0;i<4;i++){
+            this.panelGuardar.add(this.etiList.get(i));
+	    this.panelGuardar.add(this.txtList.get(i));
+        }
+        this.panelVer.add(this.scroll, BorderLayout.CENTER);
+	this.panelGuardar.add(this.boton);
+	this.panelGuardar.add(this.boton2);
+	this.panelInicial.add(this.panelGuardar);
+	this.panelInicial.add(this.panelVer);
+	this.add(this.panelInicial);
     }
     
     public Object[][] cargaDatosTabla(int h, int w)
@@ -135,14 +136,6 @@ public class VentanaArtista extends  JInternalFrame{
 
     public void setBoton(JButton boton) {
         this.boton = boton;
-    }
-
-    public JPanel getPanelPrincipal() {
-        return panelPrincipal;
-    }
-
-    public void setPanelPrincipal(JPanel panelPrincipal) {
-        this.panelPrincipal = panelPrincipal;
     }
 
     public GestionDato getgD() {
@@ -192,6 +185,40 @@ public class VentanaArtista extends  JInternalFrame{
     public void setScroll(JScrollPane scroll) {
         this.scroll = scroll;
     }
+
+    public JButton getBoton2() {
+        return boton2;
+    }
+
+    public void setBoton2(JButton boton2) {
+        this.boton2 = boton2;
+    }
+
+    public JPanel getPanelGuardar() {
+        return panelGuardar;
+    }
+
+    public void setPanelGuardar(JPanel panelGuardar) {
+        this.panelGuardar = panelGuardar;
+    }
+
+    public JPanel getPanelInicial() {
+        return panelInicial;
+    }
+
+    public void setPanelInicial(JPanel panelInicial) {
+        this.panelInicial = panelInicial;
+    }
+
+    public JPanel getPanelVer() {
+        return panelVer;
+    }
+
+    public void setPanelVer(JPanel panelVer) {
+        this.panelVer = panelVer;
+    }
+    
+    
    
     
     

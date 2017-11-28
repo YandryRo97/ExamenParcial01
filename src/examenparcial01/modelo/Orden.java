@@ -5,15 +5,14 @@ package examenparcial01.modelo;
  */
 public class Orden {
     private int orden;
-    private Artista artista;
     private FestivalMusical festivalMusical;
+    private Artista artista;
 
-    public Orden(int orden, Artista artista, FestivalMusical festivalMusical) {
+    public Orden(int orden, FestivalMusical festivalMusical, Artista artista) {
         this.orden = orden;
-        this.artista = artista;
         this.festivalMusical = festivalMusical;
+        this.artista = artista;
     }
-
 
     public int getOrden() {
         return orden;
@@ -21,6 +20,14 @@ public class Orden {
 
     public void setOrden(int orden) {
         this.orden = orden;
+    }
+
+    public FestivalMusical getFestivalMusical() {
+        return festivalMusical;
+    }
+
+    public void setFestivalMusical(FestivalMusical festivalMusical) {
+        this.festivalMusical = festivalMusical;
     }
 
     public Artista getArtista() {
@@ -31,13 +38,7 @@ public class Orden {
         this.artista = artista;
     }
 
-    public FestivalMusical getFestivalMusical() {
-        return festivalMusical;
-    }
 
-    public void setFestivalMusical(FestivalMusical festivalMusical) {
-        this.festivalMusical = festivalMusical;
-    }
 }
  
    

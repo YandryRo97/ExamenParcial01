@@ -36,7 +36,7 @@ public class VentanaPrincipal extends JFrame{
     
     public VentanaPrincipal(String titulo, GestionDato gD) {
         this.setTitle(titulo);
-        this.setSize(800, 600);
+        this.setSize(600, 400);
         this.setDefaultCloseOperation(3);
         this.gD = gD;
         iniciaComponente();
