@@ -24,9 +24,6 @@ public class Artista extends Persona{
     public void setTipoMusica(String tipoMusica) {
         this.tipoMusica = tipoMusica;
     }
-
-    
-    
-    
+ 
     
 }
