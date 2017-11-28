@@ -91,7 +91,15 @@ public class GestionDato
     {
       return this.asistenteList.add(aS);
     }
-
+    public Asistente bucarAsistente (String x){
+        Asistente retorno=null;
+        for(Asistente aS:this.asistenteList){
+            if(aS.getNombre()==x){
+                retorno=aS;
+            }
+        }
+        return retorno;
+    }
 
     
 }

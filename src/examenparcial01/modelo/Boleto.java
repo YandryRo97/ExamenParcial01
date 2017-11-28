@@ -5,12 +5,12 @@ public class Boleto
 {
     private Asistente asistente;
     private String asiento;
-    private FestivalMusical festival;
+    private String festivalMusical;
 
-    public Boleto(Asistente asistente, String asiento, FestivalMusical festival) {
+    public Boleto(Asistente asistente, String asiento, String festivalMusical) {
         this.asistente = asistente;
         this.asiento = asiento;
-        this.festival = festival;
+        this.festivalMusical = festivalMusical;
     }
 
     public Asistente getAsistente() {
@@ -21,26 +21,25 @@ public class Boleto
         this.asistente = asistente;
     }
 
-    public String getNumAsi() {
+    public String getAsiento() {
         return asiento;
     }
 
-    public void setNumAsi(String asiento) {
+    public void setAsiento(String asiento) {
         this.asiento = asiento;
     }
 
-    public FestivalMusical getFestival() {
-        return festival;
+    public String getFestivalMusical() {
+        return festivalMusical;
     }
 
-    public void setFestival(FestivalMusical festival) {
-        this.festival = festival;
+    public void setFestivalMusical(String festivalMusical) {
+        this.festivalMusical = festivalMusical;
     }
 
-    @Override
-    public String toString() {
-        return "Boleto{" + "asistente=" + asistente + ", asiento=" + asiento + ", festival=" + festival + '}';
-    }
+    
+
+   
 
    
     
