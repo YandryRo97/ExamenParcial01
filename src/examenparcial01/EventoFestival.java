@@ -1,6 +1,7 @@
 
 package examenparcial01;
 
+import examenparcial01.modelo.FestivalMusical;
 import examenparcial01.vista.VentanaFestival;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +23,10 @@ public class EventoFestival implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String n = this.ventana.getTxtList().get(0).getText();
+        FestivalMusical f = new FestivalMusical(n);
+        this.ventana.getgD().addFestivalMusical(f);
+        
     }
     
 }

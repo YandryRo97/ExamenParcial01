@@ -27,7 +27,7 @@ public class VentanaFestival  extends JFrame{
     private List<JTextField> txtList;   //Formato para el ingreso de datos por el usuario
     private JButton boton;      //Atributo que dara origen a un evento
     private JPanel panelPrincipal;  //Dara el formato de la ventana
-    private final GestionDato gD;
+    private GestionDato gD;
     private Object[][] datos;   //Matriz donde los datos seran mostrados
     private Object[] encabezado;    //Vector que dara a conocer el tipo de dato
     private DefaultTableModel modeloTabla;
@@ -58,7 +58,7 @@ public class VentanaFestival  extends JFrame{
         this.panelPrincipal.add(panelSup,BorderLayout.NORTH);
         this.encabezado = new Object[1];    //Dar valores al encabezado de la tabla
         this.encabezado[0]="Festival";
-        this.datos = cargaDatosTabla(this.getgD().getFestivalList().size(),1);   //Tamaño de la tabla 
+        this.datos = cargaDatosTabla(this.getgD().getFestivalMusicalList().size(),1);   //Tamaño de la tabla 
         this.modeloTabla = new DefaultTableModel(this.datos,this.encabezado);
         this.tabla = new JTable(modeloTabla);
         this.boton.addActionListener(new EventoFestival(this));   //Llamado al metodo
@@ -68,10 +68,83 @@ public class VentanaFestival  extends JFrame{
     public Object[][] cargaDatosTabla(int h, int w){    //Metodo para el llenado de datos
         Object[][] retorno= new Object[h][w];
         int i=0;
-        for(FestivalMusical f:this.gD.getFestivalList()){    //Recorrido por la matriz de datos
+        for(FestivalMusical f:this.gD.getFestivalMusicalList()){    //Recorrido por la matriz de datos
             retorno[i][0]=f.getNombre();
             i++;
         }        
         return retorno;
     }
+
+    public List<JLabel> getEtiList() {
+        return etiList;
+    }
+
+    public void setEtiList(List<JLabel> etiList) {
+        this.etiList = etiList;
+    }
+
+    public List<JTextField> getTxtList() {
+        return txtList;
+    }
+
+    public void setTxtList(List<JTextField> txtList) {
+        this.txtList = txtList;
+    }
+
+    public JButton getBoton() {
+        return boton;
+    }
+
+    public void setBoton(JButton boton) {
+        this.boton = boton;
+    }
+
+    public JPanel getPanelPrincipal() {
+        return panelPrincipal;
+    }
+
+    public void setPanelPrincipal(JPanel panelPrincipal) {
+        this.panelPrincipal = panelPrincipal;
+    }
+
+    public GestionDato getgD() {
+        return gD;
+    }
+
+    public void setgD(GestionDato gD) {
+        this.gD = gD;
+    }
+
+    public Object[][] getDatos() {
+        return datos;
+    }
+
+    public void setDatos(Object[][] datos) {
+        this.datos = datos;
+    }
+
+    public Object[] getEncabezado() {
+        return encabezado;
+    }
+
+    public void setEncabezado(Object[] encabezado) {
+        this.encabezado = encabezado;
+    }
+
+    public DefaultTableModel getModeloTabla() {
+        return modeloTabla;
+    }
+
+    public void setModeloTabla(DefaultTableModel modeloTabla) {
+        this.modeloTabla = modeloTabla;
+    }
+
+    public JTable getTabla() {
+        return tabla;
+    }
+
+    public void setTabla(JTable tabla) {
+        this.tabla = tabla;
+    }
+    
 }
