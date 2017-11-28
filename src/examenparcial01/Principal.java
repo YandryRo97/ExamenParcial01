@@ -21,7 +21,6 @@ public class Principal {
         // TODO code application logic here
         GestionDato gD = new GestionDato();
         
-        
         Ventana v = new Ventana("Examen Parcial 01", gD);
     }
     
