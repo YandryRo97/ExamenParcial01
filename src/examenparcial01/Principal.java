@@ -6,7 +6,10 @@
 package examenparcial01;
 
 import examenparcial01.controlador.GestionDato;
+import examenparcial01.modelo.FestivalMusical;
 import examenparcial01.vista.Ventana;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
