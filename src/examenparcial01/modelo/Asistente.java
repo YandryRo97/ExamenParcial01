@@ -10,6 +10,10 @@ public class Asistente  {
         this.cedula = cedula;
     }
 
+    public Asistente(String c, String n, String fn, String ce) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Persona getPersona() {
         return persona;
     }
