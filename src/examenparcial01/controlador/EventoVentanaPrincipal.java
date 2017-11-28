@@ -5,6 +5,7 @@
  */
 package examenparcial01.controlador;
 
+import examenparcial01.vista.VentanaArtista;
 import examenparcial01.vista.VentanaAsistente;
 import examenparcial01.vista.VentanaPrincipal;
 import java.awt.event.ActionEvent;
@@ -34,6 +35,12 @@ public class EventoVentanaPrincipal implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) 
     {
+         if(e.getSource().equals(this.vPrincipal.getMenuItemList().get(0)))
+        {
+            VentanaArtista vA= new VentanaArtista(this.vPrincipal.getgD());
+            vA.setVisible(true);
+            this.vPrincipal.getEscritorio().add(vA);
+        }
          if(e.getSource().equals(this.vPrincipal.getMenuItemList().get(1)))
         {
             VentanaAsistente vA= new VentanaAsistente(this.vPrincipal.getgD());
