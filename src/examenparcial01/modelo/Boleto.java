@@ -4,12 +4,12 @@ package examenparcial01.modelo;
 public class Boleto 
 {
     private Asistente asistente;
-    private String numAsi;
+    private String asiento;
     private FestivalMusical festival;
 
-    public Boleto(Asistente asistente, String numAsi, FestivalMusical festival) {
+    public Boleto(Asistente asistente, String asiento, FestivalMusical festival) {
         this.asistente = asistente;
-        this.numAsi = numAsi;
+        this.asiento = asiento;
         this.festival = festival;
     }
 
@@ -22,11 +22,11 @@ public class Boleto
     }
 
     public String getNumAsi() {
-        return numAsi;
+        return asiento;
     }
 
-    public void setNumAsi(String numAsi) {
-        this.numAsi = numAsi;
+    public void setNumAsi(String asiento) {
+        this.asiento = asiento;
     }
 
     public FestivalMusical getFestival() {
@@ -37,9 +37,6 @@ public class Boleto
         this.festival = festival;
     }
 
-    @Override
-    public String toString() {
-        return "Boleto{" + "asistente=" + asistente + ", numAsi=" + numAsi + ", festival=" + festival + '}';
-    }
+   
     
 }
