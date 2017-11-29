@@ -2,7 +2,8 @@
 package examenparcial01.vista;
 
 
-import examenparcial01.EventoFestival;
+
+import examenparcial01.controlador.EventoVentanaFestival;
 import examenparcial01.controlador.GestionDato;
 import examenparcial01.modelo.FestivalMusical;
 import java.awt.BorderLayout;
@@ -13,6 +14,7 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -26,49 +28,64 @@ public class VentanaFestival  extends JFrame{
     private List<JLabel> etiList;   //Etiquetas o textos ya determinados
     private List<JTextField> txtList;   //Formato para el ingreso de datos por el usuario
     private JButton boton;      //Atributo que dara origen a un evento
-    private JPanel panelPrincipal;  //Dara el formato de la ventana
-    private GestionDato gD;
+    private JPanel panelInicial;  //Dara el formato de la ventana
+    private JPanel panelGuardar;
+    private JPanel panelVer;
+    private GestionDato gestionDato;
     private Object[][] datos;   //Matriz donde los datos seran mostrados
     private Object[] encabezado;    //Vector que dara a conocer el tipo de dato
     private DefaultTableModel modeloTabla;
     private JTable tabla;
+    private JScrollPane scroll;
+    private JComboBox combo;
     
     public VentanaFestival(GestionDato gD) {
-        super("Ventana Festival");
-        this.gD = gD;
-        this.setSize(800, 600);
+        super("Registrar Festival Musical");
+        this.setSize(400, 300);
+        this.gestionDato = gD;
         this.iniciaComponentes();
-        this.setDefaultCloseOperation(3);
-        this.setVisible(true);
     }
 
     private void iniciaComponentes() {
-         this.etiList = new ArrayList<JLabel>();     //Vector de etiquetas
+        
+        this.etiList = new ArrayList<JLabel>();     //Vector de etiquetas
         this.etiList.add(new JLabel("Nombre del Festival: "));
+        
         this.txtList = new ArrayList<JTextField>();     //Vector de textos
         this.txtList.add(new JTextField());
-        this.boton = new JButton("Guardar");        //Boton para el guardado de datos
-        LayoutManager disenioPrincipal = new BorderLayout();    //Formato de la ventana
-        this.panelPrincipal = new JPanel(disenioPrincipal);     //Formato de las etiquetas y textos de la ventana
-        LayoutManager disenioSup = new GridLayout(2,2);
-        JPanel panelSup = new JPanel(disenioSup);
-        panelSup.add(this.etiList.get(0)); 
-        panelSup.add(this.txtList.get(0));
-        panelSup.add(this.boton);
-        this.panelPrincipal.add(panelSup,BorderLayout.NORTH);
+        
+        this.boton = new JButton("Guardar"); //Boton para el guardado de datos
+        this.boton.addActionListener(new EventoVentanaFestival(this));   //Llamado al metodo
+        
         this.encabezado = new Object[1];    //Dar valores al encabezado de la tabla
         this.encabezado[0]="Festival";
-        this.datos = cargaDatosTabla(this.getgD().getFestivalMusicalList().size(),1);   //Tamaño de la tabla 
+        
+        this.datos = cargaDatosTabla(this.gestionDato.getFestivalMusicalList().size(), 1);//Tamaño de la tabla 
+         
         this.modeloTabla = new DefaultTableModel(this.datos,this.encabezado);
         this.tabla = new JTable(modeloTabla);
-        this.boton.addActionListener(new EventoFestival(this));   //Llamado al metodo
-        this.add(this.panelPrincipal);
+        this.scroll = new JScrollPane(this.tabla);
+        
+        LayoutManager disenio = new GridLayout(3, 2);
+        LayoutManager disenio2 = new GridLayout(2, 1);
+	this.panelVer= new JPanel(new BorderLayout());
+	this.panelGuardar = new JPanel(disenio);
+	this.panelInicial = new JPanel(disenio2);
+        
+        this.panelGuardar.add(this.etiList.get(0));
+        this.panelGuardar.add(this.txtList.get(0));
+        
+        this.panelVer.add(this.scroll, BorderLayout.CENTER);
+	this.panelGuardar.add(this.boton);
+	this.panelInicial.add(this.panelGuardar);
+	this.panelInicial.add(this.panelVer);
+	this.add(this.panelInicial);
     }
     
     public Object[][] cargaDatosTabla(int h, int w){    //Metodo para el llenado de datos
         Object[][] retorno= new Object[h][w];
         int i=0;
-        for(FestivalMusical f:this.gD.getFestivalMusicalList()){    //Recorrido por la matriz de datos
+        for(FestivalMusical f:this.gestionDato.getFestivalMusicalList()){    //Recorrido por la matriz de datos
             retorno[i][0]=f.getNombre();
             i++;
         }        
@@ -99,21 +116,55 @@ public class VentanaFestival  extends JFrame{
         this.boton = boton;
     }
 
-    public JPanel getPanelPrincipal() {
-        return panelPrincipal;
+    public JComboBox getCombo() {
+        return combo;
     }
 
-    public void setPanelPrincipal(JPanel panelPrincipal) {
-        this.panelPrincipal = panelPrincipal;
+    public void setCombo(JComboBox combo) {
+        this.combo = combo;
+    }
+    
+
+    public JPanel getPanelInicial() {
+        return panelInicial;
     }
 
-    public GestionDato getgD() {
-        return gD;
+    public void setPanelInicial(JPanel panelInicial) {
+        this.panelInicial = panelInicial;
     }
 
-    public void setgD(GestionDato gD) {
-        this.gD = gD;
+    public JPanel getPanelGuardar() {
+        return panelGuardar;
     }
+
+    public void setPanelGuardar(JPanel panelGuardar) {
+        this.panelGuardar = panelGuardar;
+    }
+
+    public JPanel getPanelVer() {
+        return panelVer;
+    }
+
+    public void setPanelVer(JPanel panelVer) {
+        this.panelVer = panelVer;
+    }
+
+    public JScrollPane getScroll() {
+        return scroll;
+    }
+
+    public void setScroll(JScrollPane scroll) {
+        this.scroll = scroll;
+    }
+
+    public GestionDato getGestionDato() {
+        return gestionDato;
+    }
+
+    public void setGestionDato(GestionDato gestionDato) {
+        this.gestionDato = gestionDato;
+    }
+    
 
     public Object[][] getDatos() {
         return datos;

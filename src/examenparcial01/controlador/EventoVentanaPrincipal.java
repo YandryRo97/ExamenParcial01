@@ -8,6 +8,7 @@ package examenparcial01.controlador;
 import examenparcial01.vista.VentanaArtista;
 import examenparcial01.vista.VentanaAsistente;
 import examenparcial01.vista.VentanaBoleto;
+import examenparcial01.vista.VentanaFestival;
 import examenparcial01.vista.VentanaOrden;
 import examenparcial01.vista.VentanaPrincipal;
 import java.awt.event.ActionEvent;
@@ -43,18 +44,28 @@ public class EventoVentanaPrincipal implements ActionListener{
             vAr.setVisible(true);
             this.vPrincipal.getEscritorio().add(vAr);
         }
+         
          if(e.getSource().equals(this.vPrincipal.getMenuItemList().get(1)))
         {
             VentanaAsistente vA= new VentanaAsistente(this.vPrincipal.getgD());
             vA.setVisible(true);
             this.vPrincipal.getEscritorio().add(vA);
         }
+         
          if(e.getSource().equals(this.vPrincipal.getMenuItemList().get(2)))
         {
             VentanaBoleto vB= new VentanaBoleto(this.vPrincipal.getgD());
             vB.setVisible(true);
             this.vPrincipal.getEscritorio().add(vB);
         }
+         
+          if(e.getSource().equals(this.vPrincipal.getMenuItemList().get(3)))
+        {
+            VentanaFestival vF= new VentanaFestival(this.vPrincipal.getgD());
+            vF.setVisible(true);
+            this.vPrincipal.getEscritorio().add(vF);
+        }
+          
           if(e.getSource().equals(this.vPrincipal.getMenuItemList().get(4)))
         {
             VentanaOrden vO= new VentanaOrden(this.vPrincipal.getgD());
