@@ -26,7 +26,10 @@ public class EventoFestival implements ActionListener {
         String n = this.ventana.getTxtList().get(0).getText();
         FestivalMusical f = new FestivalMusical(n);
         this.ventana.getgD().addFestivalMusical(f);
-        
+        Object [][] dato=this.ventana.cargaDatosTabla(this.ventana.getgD().getFestivalMusicalList().size(),1);
+        this.ventana.setDatos(dato);
+        this.ventana.getModeloTabla().setDataVector(this.ventana.getDatos(), this.ventana.getEncabezado());
+        this.ventana.getTxtList().get(0).setText("");
     }
     
 }
